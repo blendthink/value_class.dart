@@ -1,0 +1,5 @@
+# Dart 2.17.2 or later must be used.
+# https://github.com/dart-lang/pub/pull/3215
+dependency_overrides:
+  value_annotation:
+    path: ../value_annotation
