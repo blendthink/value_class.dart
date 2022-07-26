@@ -2,4 +2,6 @@
 /// [value_class](https://pub.dev/packages/value_class).
 library value_annotation;
 
-export 'src/value_class.dart';
+export 'package:value_annotation/src/value_class.dart';
+
+export 'package:collection/collection.dart' show DeepCollectionEquality;
