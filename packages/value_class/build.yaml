@@ -1,0 +1,21 @@
+targets:
+  $default:
+    builders:
+      value_class:
+        enabled: true
+        generate_for:
+          include:
+            - example/example.dart
+      source_gen|combining_builder:
+        options:
+          ignore_for_file:
+            - type=lint
+
+builders:
+  value_class:
+    import: "package:value_class/builder.dart"
+    builder_factories: [ "builder" ]
+    build_extensions: { ".dart": [ ".value.dart" ] }
+    auto_apply: dependents
+    build_to: source
+    applies_builders: [ "source_gen|combining_builder" ]
