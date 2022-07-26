@@ -5,3 +5,5 @@ import 'package:meta/meta_meta.dart';
 class ValueClass {
   const ValueClass();
 }
+
+const valueClass = ValueClass();
