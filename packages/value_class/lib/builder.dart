@@ -3,8 +3,7 @@ import 'package:source_gen/source_gen.dart';
 import 'package:value_class/src/value_class_generator.dart';
 
 Builder builder(BuilderOptions options) {
-  // final config = ValueClass.fromJson(options.config)
-  // ValueClassGenerator(config)
+  // TODO: `final config = ValueClass.fromJson(options.config); ValueClassGenerator(config);`
   return PartBuilder(
     [const ValueClassGenerator()],
     '.value.dart',
