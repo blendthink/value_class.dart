@@ -3,7 +3,7 @@ description: >
   Code generation for value classes.
   This package depends on value_annotation.
 version: 1.0.0
-homepage: https://github.com/blendthink/value_class.dart
+homepage: https://github.com/blendthink/value_class.dart/tree/main/packages/value_class
 
 environment:
   sdk: '>=2.14.0 <3.0.0'
