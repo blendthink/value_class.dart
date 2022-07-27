@@ -2,14 +2,9 @@ targets:
   $default:
     builders:
       value_class:
-        enabled: true
         generate_for:
           include:
             - example/example.dart
-      source_gen|combining_builder:
-        options:
-          ignore_for_file:
-            - type=lint
 
 builders:
   value_class:
@@ -18,4 +13,3 @@ builders:
     build_extensions: { ".dart": [ ".value.dart" ] }
     auto_apply: dependents
     build_to: source
-    applies_builders: [ "source_gen|combining_builder" ]
