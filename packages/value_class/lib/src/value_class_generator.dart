@@ -8,17 +8,14 @@ class ValueClassGenerator extends GeneratorForAnnotation<ValueClass> {
   const ValueClassGenerator();
 
   @override
-  String? generateForAnnotatedElement(
+  Future<String> generateForAnnotatedElement(
     Element element,
     ConstantReader annotation,
     BuildStep buildStep,
-  ) {
-    final parser = ElementParser(element);
+  ) async {
+    final content = await buildStep.readAsString(buildStep.inputId);
+    final parser = ElementParser(element: element, content: content);
     final data = parser.parse();
-    if (data == null) {
-      return null;
-    }
-
-    return 'const demo = 1;';
+    return data.toString();
   }
 }

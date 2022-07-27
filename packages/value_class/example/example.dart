@@ -6,5 +6,5 @@ part 'example.value.dart';
 class Example with _$Example {
   const factory Example(String value) = _Example;
 
-  factory Example.fromJson(String value) => Example(value);
+  const factory Example.fromJson(String value) = _Example;
 }
