@@ -1,8 +1,4 @@
 class TemplateData {
-  final bool _isInitial;
-  final String _className;
-  final String _typeName;
-
   TemplateData({
     required bool isInitial,
     required String className,
@@ -11,11 +7,16 @@ class TemplateData {
         _className = className,
         _typeName = typeName;
 
+  final bool _isInitial;
+  final String _className;
+  final String _typeName;
+
   String get _common => !_isInitial
       ? ''
       : '''
 Never _throwUnsupportedError() => throw UnsupportedError(
-    'It seems like you constructed your class using private constructor.');
+      'It seems like you constructed your class using private constructor.',
+    );
 ''';
 
   @override
@@ -29,23 +30,25 @@ mixin _\$$_className {
 }
 
 /// @nodoc
+@immutable
 class _$_className implements $_className {
-  final $_typeName value;
-
   const _$_className(this.value);
 
+  @override
+  final $_typeName value;
+
+  @override
   $_typeName toJson() => value;
 
   @override
   String toString() => '$_className(value: \$value)';
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_className &&
-            const DeepCollectionEquality().equals(other.value, value));
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is _$_className &&
+          const DeepCollectionEquality().equals(other.value, value));
 
   @override
   int get hashCode =>

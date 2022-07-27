@@ -1,6 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
+// ignore_for_file: lines_longer_than_80_chars
 
 part of 'example.dart';
 
@@ -9,7 +10,8 @@ part of 'example.dart';
 // **************************************************************************
 
 Never _throwUnsupportedError() => throw UnsupportedError(
-    'It seems like you constructed your class using private constructor.');
+      'It seems like you constructed your class using private constructor.',
+    );
 
 /// @nodoc
 mixin _$Example {
@@ -19,23 +21,25 @@ mixin _$Example {
 }
 
 /// @nodoc
+@immutable
 class _Example implements Example {
-  final String value;
-
   const _Example(this.value);
 
+  @override
+  final String value;
+
+  @override
   String toJson() => value;
 
   @override
   String toString() => 'Example(value: $value)';
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Example &&
-            const DeepCollectionEquality().equals(other.value, value));
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is _Example &&
+          const DeepCollectionEquality().equals(other.value, value));
 
   @override
   int get hashCode =>

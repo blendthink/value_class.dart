@@ -12,17 +12,17 @@ Never _throwSourceError(
     throw InvalidGenerationSourceError(message, element: element);
 
 class ElementParser {
-  final Element _element;
-  final String _content;
-
   ElementParser({
     required Element element,
     required String content,
   })  : _element = element,
         _content = content;
 
+  final Element _element;
+  final String _content;
+
   TemplateData parse() {
-    final element = this._element;
+    final element = _element;
     final library = element.library!;
 
     if (!library.isNonNullableByDefault) {
@@ -36,7 +36,7 @@ class ElementParser {
     final className = element.name ?? '';
     if (element is! ClassElement || element.isEnum || element.isMixin) {
       _throwSourceError(
-        '`@valueClass` can only be used on classes. Failing element: `$className`',
+        '''`@valueClass` can only be used on classes. Failing element: `$className`''',
         element: element,
       );
     }
@@ -63,20 +63,21 @@ class ElementParser {
     });
     if (mainConstructor == null) {
       _throwSourceError(
-        'The class `$className` must have `const factory $className(xxx value) = _$className`',
+        '''The class `$className` must have `const factory $className(xxx value) = _$className`''',
         element: element,
       );
     }
 
     if (!mainConstructor.isConst) {
       log.warning(
-          'It is recommended that the Constructor be given the const modifier.');
+        'It is recommended that the Constructor be given the const modifier.',
+      );
     }
 
     final parameters = mainConstructor.parameters;
     if (parameters.length != 1) {
       _throwSourceError(
-        'The class `$className` must have only one parameter in the constructor.',
+        '''The class `$className` must have only one parameter in the constructor.''',
         element: parameters.lastOrNull ?? element,
       );
     }
@@ -84,7 +85,7 @@ class ElementParser {
     final parameterName = parameter.name;
     if (parameterName != 'value') {
       _throwSourceError(
-        "Parameter name must be `value`.",
+        'Parameter name must be `value`.',
         element: parameter,
       );
     }
@@ -109,23 +110,25 @@ class ElementParser {
       typeName = 'num';
     } else {
       _throwSourceError(
-        "Parameter type must be one of String, bool, int, double or num.",
+        'Parameter type must be one of String, bool, int, double or num.',
         element: parameter,
       );
     }
 
-    final containsClass = _content.contains(RegExp(
-      r'factory\s+' +
-          className +
-          r'\s*\(\s*' +
-          typeName +
-          r'\s+value[,\s]*\)\s*=\s*_' +
-          className +
-          r'\s*;',
-    ));
+    final containsClass = _content.contains(
+      RegExp(
+        r'factory\s+' +
+            className +
+            r'\s*\(\s*' +
+            typeName +
+            r'\s+value[,\s]*\)\s*=\s*_' +
+            className +
+            r'\s*;',
+      ),
+    );
     if (!containsClass) {
       _throwSourceError(
-        'The class `$className` must have `factory $className($typeName value) = _$className`',
+        '''The class `$className` must have `factory $className($typeName value) = _$className`''',
         element: mainConstructor,
       );
     }
