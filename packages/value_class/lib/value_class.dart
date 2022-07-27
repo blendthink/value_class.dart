@@ -5,6 +5,8 @@ import 'package:value_class/src/value_class_generator.dart';
 Builder builder(BuilderOptions options) {
   const ignoreLints = [
     'lines_longer_than_80_chars',
+    'deprecated_member_use',
+    'deprecated_member_use_from_same_package',
   ];
 
   // TODO(blendthink): implement config
@@ -17,7 +19,7 @@ Builder builder(BuilderOptions options) {
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: ${ignoreLints.join(',')}
+// ignore_for_file: ${ignoreLints.join(', ')}
     ''',
     options: options,
   );
