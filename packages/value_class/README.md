@@ -1,39 +1,63 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+[![Pub Version](https://badgen.net/pub/v/value_class)](https://pub.dev/packages/value_class/)
+[![Dart SDK Version](https://badgen.net/pub/sdk-version/value_class)](https://pub.dev/packages/value_class/)
+[![Pub popularity](https://badgen.net/pub/popularity/value_class)](https://pub.dev/packages/value_class/score)
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+By annotating the class, the code required for the "Value Class" is automatically generated.
+
+Inspired by [json_serializable](https://pub.dev/packages/json_serializable)
+and [freezed](https://pub.dev/packages/freezed).
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Flutter project:
+
+```shell
+flutter pub add value_annotation
+flutter pub add --dev build_runner
+flutter pub add --dev value_class
+
+flutter pub get
+```
+
+Dart project:
+
+```shell
+dart pub add value_annotation
+dart pub add --dev build_runner
+dart pub add --dev value_class
+
+dart pub get
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+### 1. Create class
 
 ```dart
-const like = 'sample';
+import 'package:value_annotation/value_annotation.dart';
+
+part 'example.value.dart';
+
+@valueClass
+class Example with _$Example {
+  const factory Example(String value) = _Example;
+
+  const factory Example.fromJson(String value) = _Example;
+}
 ```
 
-## Additional information
+### 2. Run generator
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+Flutter project:
+
+```shell
+flutter pub run build_runner build
+```
+
+Dart project:
+
+```shell
+dart run build_runner build
+```
