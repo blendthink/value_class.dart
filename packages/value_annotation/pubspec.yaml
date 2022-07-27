@@ -6,8 +6,8 @@ version: 1.0.0
 homepage: https://github.com/blendthink/value_class.dart/tree/main/packages/value_annotation
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.14.0 <3.0.0'
 
 dependencies:
   collection: ^1.16.0
-  meta: ^1.5.0
+  meta: ^1.8.0
