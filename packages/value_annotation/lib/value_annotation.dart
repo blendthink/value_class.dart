@@ -5,3 +5,4 @@ library value_annotation;
 export 'package:value_annotation/src/value_class.dart';
 
 export 'package:collection/collection.dart' show DeepCollectionEquality;
+export 'package:meta/meta.dart' show immutable;
