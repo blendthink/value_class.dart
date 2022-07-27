@@ -13,7 +13,7 @@ targets:
 
 builders:
   value_class:
-    import: "package:value_class/builder.dart"
+    import: "package:value_class/value_class.dart"
     builder_factories: [ "builder" ]
     build_extensions: { ".dart": [ ".value.dart" ] }
     auto_apply: dependents
