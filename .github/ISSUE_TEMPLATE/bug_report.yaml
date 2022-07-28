@@ -1,0 +1,57 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: [ "bug", "triage" ]
+assignees:
+  - blendthink
+body:
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Please search to see if an issue already exists for the bug you encountered.
+      options:
+        - label: I have searched the existing issues
+          required: true
+  - type: textarea
+    attributes:
+      label: Current Behavior
+      description: A concise description of what you're experiencing.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: A concise description of what you expected to happen.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Sample Code
+      description: Sample code to reproduce.
+      placeholder: |
+        import 'package:value_annotation/value_annotation.dart';
+
+        part 'example.value.dart';
+
+        @valueClass
+        class Example with _$Example {
+          const factory Example(String value) = _Example;
+
+          const factory Example.fromJson(String value) = _Example;
+        }
+      render: dart
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Environment
+      description: |
+        examples:
+          - dart: 2.14.0
+          - value_class: 1.0.0+1
+      value: |
+        - dart: 
+        - value_class:
+      render: markdown
+    validations:
+      required: true
