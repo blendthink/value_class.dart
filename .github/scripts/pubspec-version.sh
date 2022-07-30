@@ -3,11 +3,11 @@
 echo 'fetch'
 git fetch origin "$GITHUB_BASE_REF" --depth=1
 
-echo 'diff'
 diff=$(git diff origin/"$GITHUB_BASE_REF"..HEAD -- packages/"$PACKAGE"/pubspec.yaml)
+echo "diff: $diff"
 
-echo 'version'
 version=$(awk '/\+version: /{print $2}' <<<"$diff")
+echo "version: $version"
 
 echo 'set-output'
 echo "::set-output name=version::$version"
