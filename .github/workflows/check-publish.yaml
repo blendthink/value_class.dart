@@ -3,7 +3,7 @@ name: check-publish
 on:
   pull_request:
     branches:
-      - 'release/**'
+      - 'main'
     paths:
       - 'packages/value_annotation/pubspec.yaml'
       - 'packages/value_class/pubspec.yaml'
@@ -14,6 +14,7 @@ jobs:
     strategy:
       matrix:
         package: [ value_annotation, value_class ]
+    if: github.event.pull_request.merged == false && startsWith(github.head_ref, 'release/')
     steps:
       - uses: actions/checkout@v3
       - id: pubspec-version
@@ -21,14 +22,14 @@ jobs:
         run: .github/scripts/pubspec-version.sh
         env:
           PACKAGE: ${{ matrix.package }}
-      - if: steps.pubspec-version.outputs.isNotEmpty
+      - if: ${{ steps.pubspec-version.outputs.isNotEmpty }}
         uses: dart-lang/setup-dart@v1.3
-      - if: steps.pubspec-version.outputs.isNotEmpty
+      - if: ${{ steps.pubspec-version.outputs.isNotEmpty }}
         name: copy credentials
         run: .github/scripts/copy-credentials.sh
         env:
           PUB_CREDENTIALS: ${{ secrets.PUB_CREDENTIALS }}
-      - if: steps.pubspec-version.outputs.isNotEmpty
+      - if: ${{ steps.pubspec-version.outputs.isNotEmpty }}
         name: check publish
         run: dart pub publish --dry-run
         working-directory: packages/${{ matrix.package }}
