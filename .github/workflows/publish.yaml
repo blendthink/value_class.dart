@@ -1,0 +1,44 @@
+name: publish
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'main'
+    paths:
+      - 'packages/value_annotation/pubspec.yaml'
+      - 'packages/value_class/pubspec.yaml'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: [ value_annotation, value_class ]
+    if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'release/')
+    steps:
+      - uses: actions/checkout@v3
+      - id: pubspec-version
+        name: pubspec version
+        run: .github/scripts/pubspec-version.sh
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          PACKAGE: ${{ matrix.package }}
+      - if: steps.pubspec-version.outputs.isNotEmpty
+        uses: dart-lang/setup-dart@v1.3
+      - if: steps.pubspec-version.outputs.isNotEmpty
+        name: copy credentials
+        run: .github/scripts/copy-credentials.sh
+        env:
+          PUB_CREDENTIALS: ${{ secrets.PUB_CREDENTIALS }}
+      - if: steps.pubspec-version.outputs.isNotEmpty
+        name: publish
+        run: dart pub publish --force
+        working-directory: packages/${{ matrix.package }}
+      - if: steps.pubspec-version.outputs.isNotEmpty
+        name: push tag
+        run: .github/scripts/push-tag.sh
+        env:
+          PACKAGE: ${{ matrix.package }}
+          VERSION: ${{ steps.pubspec-version.outputs.version }}
