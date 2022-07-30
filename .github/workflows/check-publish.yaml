@@ -3,7 +3,7 @@ name: check-publish
 on:
   pull_request:
     branches:
-      - 'release/**'
+      - 'main'
     paths:
       - 'packages/value_annotation/pubspec.yaml'
       - 'packages/value_class/pubspec.yaml'
@@ -14,6 +14,7 @@ jobs:
     strategy:
       matrix:
         package: [ value_annotation, value_class ]
+    if: github.event.pull_request.merged == false && startsWith(github.head_ref, 'release/')
     steps:
       - uses: actions/checkout@v3
       - id: pubspec-version
