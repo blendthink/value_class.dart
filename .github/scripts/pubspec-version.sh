@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-git fetch origin "$BASE_REF" --depth=1
-diff=$(git diff origin/main..HEAD -- packages/"$PACKAGE"/pubspec.yaml)
+git fetch origin "$GITHUB_BASE_REF" --depth=1
+diff=$(git diff origin/"$GITHUB_BASE_REF"..HEAD -- packages/"$PACKAGE"/pubspec.yaml)
 version=$(awk '/\+version: /{print $2}' <<<"$diff")
 echo "::set-output name=version::$version"
 
