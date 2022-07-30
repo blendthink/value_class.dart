@@ -13,8 +13,7 @@ class ValueClassGenerator extends GeneratorForAnnotation<ValueClass> {
     ConstantReader annotation,
     BuildStep buildStep,
   ) async {
-    final content = await buildStep.readAsString(buildStep.inputId);
-    final parser = ElementParser(element: element, content: content);
+    final parser = ElementParser(element: element);
     final data = parser.parse();
     return data.toString();
   }

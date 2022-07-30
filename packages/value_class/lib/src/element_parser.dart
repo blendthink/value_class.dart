@@ -14,12 +14,9 @@ Never _throwSourceError(
 class ElementParser {
   ElementParser({
     required Element element,
-    required String content,
-  })  : _element = element,
-        _content = content;
+  }) : _element = element;
 
   final Element _element;
-  final String _content;
 
   TemplateData parse() {
     final element = _element;
@@ -47,8 +44,9 @@ class ElementParser {
       log.warning('The class `$className` need not be an abstract class.');
     }
 
+    final content = element.source.contents.data;
     final containsMixins =
-        _content.contains(RegExp(r'with\s+_\$' + className + r'[,{\s]+'));
+        content.contains(RegExp(r'with\s+_\$' + className + r'[,{\s]+'));
     if (!containsMixins) {
       _throwSourceError(
         'The class `$className` must mix-in `_\$$className`.',
@@ -115,7 +113,7 @@ class ElementParser {
       );
     }
 
-    final containsClass = _content.contains(
+    final containsClass = content.contains(
       RegExp(
         r'factory\s+' +
             className +
