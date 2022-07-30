@@ -24,8 +24,6 @@ jobs:
         run: .github/scripts/pubspec-version.sh
         env:
           PACKAGE: ${{ matrix.package }}
-      - name: debug
-        run: echo "${{ steps.pubspec-version.outputs.isNotEmpty }}"
       - if: ${{ steps.pubspec-version.outputs.isNotEmpty }}
         uses: dart-lang/setup-dart@v1.3
       - if: ${{ steps.pubspec-version.outputs.isNotEmpty }}
