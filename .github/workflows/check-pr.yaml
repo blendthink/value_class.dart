@@ -22,7 +22,7 @@ jobs:
         working-directory: ${{ env.PACKAGE }}
     strategy:
       matrix:
-        sdk: [ 2.14, 2.15, 2.16, 2.17 ]
+        sdk: [ 2.14.4, 2.15.1, 2.16.2, stable ]
     steps:
       - uses: actions/checkout@v3
       - uses: dart-lang/setup-dart@v1.3
