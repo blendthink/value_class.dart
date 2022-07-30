@@ -24,18 +24,18 @@ jobs:
         run: .github/scripts/pubspec-version.sh
         env:
           PACKAGE: ${{ matrix.package }}
-      - if: steps.pubspec-version.outputs.isNotEmpty
+      - if: steps.pubspec-version.outputs.isNotEmpty == true
         uses: dart-lang/setup-dart@v1.3
-      - if: steps.pubspec-version.outputs.isNotEmpty
+      - if: steps.pubspec-version.outputs.isNotEmpty == true
         name: copy credentials
         run: .github/scripts/copy-credentials.sh
         env:
           PUB_CREDENTIALS: ${{ secrets.PUB_CREDENTIALS }}
-      - if: steps.pubspec-version.outputs.isNotEmpty
+      - if: steps.pubspec-version.outputs.isNotEmpty == true
         name: publish
         run: dart pub publish --force
         working-directory: packages/${{ matrix.package }}
-      - if: steps.pubspec-version.outputs.isNotEmpty
+      - if: steps.pubspec-version.outputs.isNotEmpty == true
         name: push tag
         run: .github/scripts/push-tag.sh
         env:
