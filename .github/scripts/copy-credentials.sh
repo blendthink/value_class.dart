@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/.pub-cache
-cat <<EOF > ~/.pub-cache/credentials.json
+mkdir -p $PUB_CACHE
+cat <<EOF > $PUB_CACHE/credentials.json
 $PUB_CREDENTIALS
 EOF
