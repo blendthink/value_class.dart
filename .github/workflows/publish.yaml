@@ -23,7 +23,6 @@ jobs:
         name: pubspec version
         run: .github/scripts/pubspec-version.sh
         env:
-          BASE_REF: ${{ github.base_ref }}
           PACKAGE: ${{ matrix.package }}
       - if: steps.pubspec-version.outputs.isNotEmpty
         uses: dart-lang/setup-dart@v1.3
