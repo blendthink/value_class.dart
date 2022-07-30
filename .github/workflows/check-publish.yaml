@@ -1,9 +1,9 @@
 name: check-publish
 
 on:
-  push:
+  pull_request:
     branches:
-      - 'release/*'
+      - 'release/**'
     paths:
       - 'packages/value_annotation/pubspec.yaml'
       - 'packages/value_class/pubspec.yaml'
