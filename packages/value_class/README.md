@@ -86,6 +86,14 @@ More types will be supported in the future.
 - [`Duration`]
 - [`Object`] that has `fromJson()` and `toJson()`
 
+## How to contribute
+
+You should follow our [Code of Conduct].
+
+See [CONTRIBUTING GUIDELINES] for contributing conventions.
+
+### Contributors
+
 <!-- Links -->
 [json_serializable]: https://pub.dev/packages/json_serializable
 [freezed]: https://pub.dev/packages/freezed
@@ -105,3 +113,5 @@ More types will be supported in the future.
 [`DateTime`]: https://api.dart.dev/stable/dart-core/DateTime-class.html
 [`Duration`]: https://api.dart.dev/stable/dart-core/Duration-class.html
 [`Object`]: https://api.dart.dev/stable/dart-core/Object-class.html
+[Code of Conduct]: ./../../CODE_OF_CONDUCT.md
+[CONTRIBUTING GUIDELINES]: ./../../CONTRIBUTING.md
