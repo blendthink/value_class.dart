@@ -1,0 +1,17 @@
+name: add-contributors
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  add-contributors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: BobAnkh/add-contributors@v0.2.2
+        with:
+          PATH: '/packages/value_class/README.md'
+          BRANCH: 'update-contributors'
+          PULL_REQUEST: 'main'
