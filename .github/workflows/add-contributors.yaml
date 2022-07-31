@@ -10,6 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: delete old branch (If it exists)
+        run: git push origin --delete update-contributors
+        continue-on-error: true
+      - name: create and push new branch
+        run: |
+          git branch update-contributors
+          git push origin update-contributors
       - uses: BobAnkh/add-contributors@v0.2.2
         with:
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
