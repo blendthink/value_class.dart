@@ -1,11 +1,3 @@
-targets:
-  $default:
-    builders:
-      value_class:
-        generate_for:
-          include:
-            - example/example.dart
-
 builders:
   value_class:
     import: "package:value_class/value_class.dart"
@@ -13,3 +5,4 @@ builders:
     build_extensions: { ".dart": [ ".value.dart" ] }
     auto_apply: dependents
     build_to: source
+    runs_before: [ "json_serializable" ]

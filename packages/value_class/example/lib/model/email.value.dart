@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: lines_longer_than_80_chars, deprecated_member_use, deprecated_member_use_from_same_package
 
-part of 'example.dart';
+part of 'email.dart';
 
 // **************************************************************************
 // ValueClassGenerator
@@ -14,7 +14,7 @@ Never _throwUnsupportedError() => throw UnsupportedError(
     );
 
 /// @nodoc
-mixin _$Example {
+mixin _$Email {
   String get value => _throwUnsupportedError();
 
   String toJson() => _throwUnsupportedError();
@@ -22,8 +22,8 @@ mixin _$Example {
 
 /// @nodoc
 @immutable
-class _Example implements Example {
-  const _Example(this.value);
+class _Email implements Email {
+  const _Email(this.value);
 
   @override
   final String value;
@@ -32,13 +32,13 @@ class _Example implements Example {
   String toJson() => value;
 
   @override
-  String toString() => 'Example(value: $value)';
+  String toString() => 'Email(value: $value)';
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other.runtimeType == runtimeType &&
-          other is _Example &&
+          other is _Email &&
           const DeepCollectionEquality().equals(other.value, value));
 
   @override
