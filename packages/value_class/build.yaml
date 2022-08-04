@@ -1,11 +1,3 @@
-targets:
-  $default:
-    builders:
-      value_class:
-        generate_for:
-          include:
-            - example/example.dart
-
 builders:
   value_class:
     import: "package:value_class/value_class.dart"
