@@ -1,0 +1,7 @@
+targets:
+  $default:
+    builders:
+      value_class:
+        generate_for:
+          include:
+            - lib/model/*.dart
