@@ -61,6 +61,74 @@ Dart project:
 dart run build_runner build
 ```
 
+## Combination
+
+This package supports the combination of [json_serializable] and [freezed].
+
+See the [example] directory.
+
+```dart:example/lib/model/email.dart
+import 'package:value_annotation/value_annotation.dart';
+
+part 'email.value.dart';
+
+@valueClass
+class Email with _$Email {
+  const factory Email(String value) = _Email;
+
+  const factory Email.fromJson(String value) = _Email;
+}
+```
+
+```dart:example/lib/model/person.dart
+import 'package:example/model/email.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'person.freezed.dart';
+
+part 'person.g.dart';
+
+@freezed
+class Person with _$Person {
+  const factory Person({
+    required Email email,
+  }) = _Person;
+
+  factory Person.fromJson(Map<String, Object?> json) => _$PersonFromJson(json);
+}
+```
+
+```dart:example/lib/main.dart
+import 'dart:convert';
+
+import 'package:example/model/email.dart';
+import 'package:example/model/person.dart';
+import 'package:simple_logger/simple_logger.dart';
+
+void main() {
+  const personBefore = Person(email: Email('example@gmail.com'));
+  final encoded = jsonEncode(personBefore);
+
+  final decoded = jsonDecode(encoded) as Map<String, dynamic>;
+  final personAfter = Person.fromJson(decoded);
+
+  SimpleLogger()
+    ..info('Encoded: $encoded')
+    ..info('Decoded: $personAfter')
+    ..info('Equals: ${personBefore == personAfter}');
+}
+```
+
+Executing `main()` will output following log.
+
+```shell
+👻 INFO 2022-08-05 01:20:40.412135 [caller info not available] Encoded: {"email":"example@gmail.com"}
+👻 INFO 2022-08-05 01:20:40.414220 [caller info not available] Decoded: Person(email: Email(value: example@gmail.com))
+👻 INFO 2022-08-05 01:20:40.414812 [caller info not available] Equals: true
+
+Process finished with exit code 0
+```
+
 ## Supported types
 
 The following Types in the [dart:core] library are supported:
@@ -107,8 +175,10 @@ See [CONTRIBUTING GUIDELINES] for contributing conventions.
 </table>
 
 <!-- Links -->
+
 [json_serializable]: https://pub.dev/packages/json_serializable
 [freezed]: https://pub.dev/packages/freezed
+[example]: ./example
 [dart:core]: https://api.dart.dev/stable/dart-core/dart-core-library.html
 [`String`]: https://api.dart.dev/stable/dart-core/String-class.html
 [`bool`]: https://api.dart.dev/stable/dart-core/bool-class.html
