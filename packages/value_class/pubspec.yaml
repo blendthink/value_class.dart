@@ -2,7 +2,7 @@ name: value_class
 description: >
   Code generation for value classes.
   This package depends on value_annotation.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/blendthink/value_class.dart/tree/main/packages/value_class
 
 environment:
