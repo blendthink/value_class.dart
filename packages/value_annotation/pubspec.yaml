@@ -2,7 +2,7 @@ name: value_annotation
 description: >
   Annotations for value_class.
   This package does nothing without value_class.
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/blendthink/value_class.dart/tree/main/packages/value_annotation
 
 environment:
