@@ -1,14 +1,22 @@
+import 'package:value_class/src/templates/asserts.dart';
+
 class TemplateData {
   TemplateData({
     required bool isInitial,
     required String className,
+    required AssertsTemplate asserts,
+    required bool isConst,
     required String typeName,
   })  : _isInitial = isInitial,
         _className = className,
+        _asserts = asserts,
+        _isConst = isConst,
         _typeName = typeName;
 
   final bool _isInitial;
   final String _className;
+  final AssertsTemplate _asserts;
+  final bool _isConst;
   final String _typeName;
 
   String get _common => !_isInitial
@@ -18,6 +26,10 @@ Never _throwUnsupportedError() => throw UnsupportedError(
       'It seems like you constructed your class using private constructor.',
     );
 ''';
+
+  String get _const => !_isConst
+      ? ''
+      : 'const';
 
   @override
   String toString() => '''
@@ -32,7 +44,7 @@ mixin _\$$_className {
 /// @nodoc
 @immutable
 class _$_className implements $_className {
-  const _$_className(this.value);
+  $_const _$_className(this.value)$_asserts;
 
   @override
   final $_typeName value;

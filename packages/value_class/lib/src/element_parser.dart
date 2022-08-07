@@ -3,7 +3,9 @@ import 'package:analyzer/dart/element/nullability_suffix.dart';
 import 'package:build/build.dart';
 import 'package:collection/collection.dart';
 import 'package:source_gen/source_gen.dart';
+import 'package:value_annotation/value_annotation.dart';
 import 'package:value_class/src/template_data.dart';
+import 'package:value_class/src/templates/asserts.dart';
 
 Never _throwSourceError(
   String message, {
@@ -66,9 +68,23 @@ class ElementParser {
       );
     }
 
-    if (!mainConstructor.isConst) {
+    const assertTypeChecker = TypeChecker.fromRuntime(Assert);
+    final asserts = assertTypeChecker.annotationsOf(mainConstructor).map((e) {
+      final eval = e.getField('eval')!.toFunctionValue()!.displayName;
+      final message = e.getField('message')?.toStringValue();
+      return AssertTemplate(eval: eval, message: message);
+    });
+
+    if (asserts.isEmpty && !mainConstructor.isConst) {
       log.warning(
-        'It is recommended that the Constructor be given the const modifier.',
+        'It is recommended that the constructor be given the const modifier.',
+      );
+    }
+
+    if (asserts.isNotEmpty && mainConstructor.isConst) {
+      _throwSourceError(
+        '''When using `@Assert`, the constructor cannot be const modifier.''',
+        element: mainConstructor,
       );
     }
 
@@ -134,6 +150,8 @@ class ElementParser {
     return TemplateData(
       isInitial: isInitial,
       className: className,
+      asserts: AssertsTemplate(asserts),
+      isConst: mainConstructor.isConst,
       typeName: typeName,
     );
   }
