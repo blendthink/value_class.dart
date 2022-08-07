@@ -448,14 +448,14 @@ packages:
       path: "../../value_annotation"
       relative: true
     source: path
-    version: "1.0.0"
+    version: "1.1.0"
   value_class:
     dependency: "direct dev"
     description:
       path: ".."
       relative: true
     source: path
-    version: "1.0.1"
+    version: "1.0.2"
   vm_service:
     dependency: transitive
     description:

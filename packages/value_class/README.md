@@ -74,10 +74,15 @@ part 'email.value.dart';
 
 @valueClass
 class Email with _$Email {
-  const factory Email(String value) = _Email;
+  @Assert(_checkNotEmpty, 'Email cannot be empty')
+  @Assert(_checkFormat, 'Email format is invalid')
+  factory Email(String value) = _Email;
 
-  const factory Email.fromJson(String value) = _Email;
+  factory Email.fromJson(String value) = _Email;
 }
+
+bool _checkNotEmpty(String value) => value.isNotEmpty;
+bool _checkFormat(String value) => value.contains(RegExp(r'^.+@\S+\.\S+$'));
 ```
 
 ```dart:example/lib/model/person.dart
@@ -106,7 +111,7 @@ import 'package:example/model/person.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 void main() {
-  const personBefore = Person(email: Email('example@gmail.com'));
+  final personBefore = Person(email: Email('example@gmail.com'));
   final encoded = jsonEncode(personBefore);
 
   final decoded = jsonDecode(encoded) as Map<String, dynamic>;

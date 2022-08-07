@@ -23,7 +23,9 @@ mixin _$Email {
 /// @nodoc
 @immutable
 class _Email implements Email {
-  const _Email(this.value);
+  _Email(this.value)
+      : assert(_checkNotEmpty(value), 'Email cannot be empty'),
+        assert(_checkFormat(value), 'Email format is invalid');
 
   @override
   final String value;
