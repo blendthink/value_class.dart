@@ -11,4 +11,4 @@ pubspec.lock
 
 .idea/*
 !.idea/externalDependencies.xml
-!example/*
+!example/pubspec.lock
