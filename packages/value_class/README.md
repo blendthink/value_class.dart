@@ -61,6 +61,30 @@ Dart project:
 dart run build_runner build
 ```
 
+## Asserts
+
+Similar to [freezed], you can use `@Assert` to add `assert(...) ` statement to the generated class.
+
+> **Note**\
+> Unlike [freezed], the first argument of `@Assert` is a `Function` instead of a `String` to reduce typos.
+> Therefore, the constructor cannot be given the const modifier.
+
+```dart
+import 'package:value_annotation/value_annotation.dart';
+
+part 'email.value.dart';
+
+@valueClass
+class Email with _$Email {
+  @Assert(_checkNotEmpty, 'Email cannot be empty')
+  @Assert(_checkFormat, 'Email format is invalid')
+  factory Email(String value) = _Email;
+}
+
+bool _checkNotEmpty(String value) => value.isNotEmpty;
+bool _checkFormat(String value) => value.contains(RegExp(r'^.+@\S+\.\S+$'));
+```
+
 ## Combination
 
 This package supports the combination of [json_serializable] and [freezed].
