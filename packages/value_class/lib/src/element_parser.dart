@@ -83,7 +83,7 @@ class ElementParser {
 
     if (asserts.isNotEmpty && mainConstructor.isConst) {
       _throwSourceError(
-        '''When using `@Assert`, the constructor cannot be const modifier.''',
+        '''When using `@Assert`, the constructor cannot be given the const modifier.''',
         element: mainConstructor,
       );
     }
