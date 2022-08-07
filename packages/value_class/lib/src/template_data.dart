@@ -27,9 +27,7 @@ Never _throwUnsupportedError() => throw UnsupportedError(
     );
 ''';
 
-  String get _const => !_isConst
-      ? ''
-      : 'const';
+  String get _const => !_isConst ? '' : 'const';
 
   @override
   String toString() => '''
