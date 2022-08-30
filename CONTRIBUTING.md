@@ -69,7 +69,7 @@ If a related issue doesn't exist, you can open a new issue using a relevant [iss
 
 ### Commit your update
 
-Once your changes are ready, don't forget to [self-review] speed up the review process.
+Once your changes are ready, don't forget to [SELF_REVIEW] speed up the review process.
 
 ### Submit a Pull Request
 
@@ -90,4 +90,4 @@ Congratulations 🎉🎉 Thanks you ✨
 [build.dart.run.xml]: ./packages/value_class/.run/build.dart.run.xml
 [Breakpoints]: https://pleiades.io/help/idea/using-breakpoints.html
 [issue form]: https://github.com/blendthink/value_class.dart/issues/new/choose
-[self-review]: ./docs/contributing/self-review.md
+[SELF_REVIEW]: ./docs/contributing/SELF_REVIEW.md
