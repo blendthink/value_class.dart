@@ -224,5 +224,5 @@ See [CONTRIBUTING GUIDELINES] for contributing conventions.
 [`DateTime`]: https://api.dart.dev/stable/dart-core/DateTime-class.html
 [`Duration`]: https://api.dart.dev/stable/dart-core/Duration-class.html
 [`Object`]: https://api.dart.dev/stable/dart-core/Object-class.html
-[Code of Conduct]: ./../../CODE_OF_CONDUCT.md
+[Code of Conduct]: ./../../docs/CODE_OF_CONDUCT.md
 [CONTRIBUTING GUIDELINES]: ./../../CONTRIBUTING.md

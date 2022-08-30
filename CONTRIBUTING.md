@@ -80,7 +80,7 @@ When you're finished with the changes, create a pull request, also known as a PR
 Congratulations 🎉🎉 Thanks you ✨
 
 <!-- Links -->
-[Code of Conduct]: ./CODE_OF_CONDUCT.md
+[Code of Conduct]: docs/CODE_OF_CONDUCT.md
 [value_annotation]: ./packages/value_annotation
 [value_class]: ./packages/value_class
 [build_runner]: https://pub.dev/packages/build_runner
