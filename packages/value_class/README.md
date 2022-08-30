@@ -204,10 +204,9 @@ See [Contributor Guide] for contributing conventions.
 </table>
 
 <!-- Links -->
-
 [json_serializable]: https://pub.dev/packages/json_serializable
 [freezed]: https://pub.dev/packages/freezed
-[example]: ./example
+[example]: https://github.com/blendthink/value_class.dart/tree/main/packages/value_class/example
 [dart:core]: https://api.dart.dev/stable/dart-core/dart-core-library.html
 [`String`]: https://api.dart.dev/stable/dart-core/String-class.html
 [`bool`]: https://api.dart.dev/stable/dart-core/bool-class.html
@@ -224,5 +223,5 @@ See [Contributor Guide] for contributing conventions.
 [`DateTime`]: https://api.dart.dev/stable/dart-core/DateTime-class.html
 [`Duration`]: https://api.dart.dev/stable/dart-core/Duration-class.html
 [`Object`]: https://api.dart.dev/stable/dart-core/Object-class.html
-[Code of Conduct]: ./../../docs/CODE_OF_CONDUCT.md
-[Contributor Guide]: ../../docs/contributing/CONTRIBUTING.md
+[Code of Conduct]: https://github.com/blendthink/value_class.dart/blob/main/docs/CODE_OF_CONDUCT.md
+[Contributor Guide]: https://github.com/blendthink/value_class.dart/blob/main/docs/contributing/CONTRIBUTING.md
