@@ -11,4 +11,4 @@
 close #ISSUE_NUMBER
 
 <!-- Links -->
-[Contributor Guide]: ./../CONTRIBUTING.md
+[Contributor Guide]: ../docs/contributing/CONTRIBUTING.md
