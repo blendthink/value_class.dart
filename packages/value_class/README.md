@@ -225,4 +225,4 @@ See [Contributor Guide] for contributing conventions.
 [`Duration`]: https://api.dart.dev/stable/dart-core/Duration-class.html
 [`Object`]: https://api.dart.dev/stable/dart-core/Object-class.html
 [Code of Conduct]: ./../../docs/CODE_OF_CONDUCT.md
-[Contributor Guide]: ./../../CONTRIBUTING.md
+[Contributor Guide]: ../../docs/contributing/CONTRIBUTING.md

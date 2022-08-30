@@ -55,7 +55,7 @@ Please make use of the shared configuration file [build.dart.run.xml].
 
 [Breakpoints] allow you to pause program execution at a specific point and examine the state and behavior of the program, which can be very useful.
 
-![Debug](docs/contributing/debug.gif)
+![Debug](debug.gif)
 
 ## Contributing
 
@@ -80,14 +80,14 @@ When you're finished with the changes, create a pull request, also known as a PR
 Congratulations 🎉🎉 Thanks you ✨
 
 <!-- Links -->
-[Code of Conduct]: docs/CODE_OF_CONDUCT.md
-[value_annotation]: ./packages/value_annotation
-[value_class]: ./packages/value_class
+[Code of Conduct]: ../CODE_OF_CONDUCT.md
+[value_annotation]: ../../packages/value_annotation
+[value_class]: ../../packages/value_class
 [build_runner]: https://pub.dev/packages/build_runner
 [IntelliJ IDEA]: https://www.jetbrains.com/idea
 [Get the Dart SDK]: https://dart.dev/get-dart
 [Run/debug configurations]: https://www.jetbrains.com/help/idea/run-debug-configuration.html
-[build.dart.run.xml]: ./packages/value_class/.run/build.dart.run.xml
+[build.dart.run.xml]: ../../packages/value_class/.run/build.dart.run.xml
 [Breakpoints]: https://pleiades.io/help/idea/using-breakpoints.html
 [issue form]: https://github.com/blendthink/value_class.dart/issues/new/choose
-[SELF_REVIEW]: ./docs/contributing/SELF_REVIEW.md
+[SELF_REVIEW]: SELF_REVIEW.md
